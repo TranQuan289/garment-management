@@ -23,7 +23,7 @@ class _BottomNavigationViewState
   void initNotifier() {
     notifier = ref.read(bottomNavigationNotifierProvider.notifier);
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,15 +50,11 @@ class _BottomNavigationViewState
       ),
       bottomNavigationBar: Container(
         color: ColorUtils.primaryBackgroundColor,
+        padding: const EdgeInsets.symmetric(vertical: 10),
         child: BottomAppBar(
           clipBehavior: Clip.antiAliasWithSaveLayer,
-          padding: const EdgeInsets.all(0),
-          shape: AutomaticNotchedShape(
-            const RoundedRectangleBorder(),
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(25),
-            ),
-          ),
+          shape: const CircularNotchedRectangle(),
+          notchMargin: 8.0,
           child: Consumer(
             builder: (context, ref, child) {
               final index = ref.watch(
@@ -69,53 +65,68 @@ class _BottomNavigationViewState
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  TextButton(
-                    onPressed: () {
-                      _pageController.jumpToPage(0);
-                      notifier.setCurrentIndex(0);
-                    },
-                    child: Text(
-                      "Home",
-                      style: TextStyle(
-                        color: index == 0
-                            ? ColorUtils.blueColor
-                            : ColorUtils.primaryColor,
-                      ),
-                    ),
+                  _buildNavItem(
+                    context,
+                    index,
+                    0,
+                    "Home",
+                    Icons.home,
                   ),
-                  TextButton(
-                    onPressed: () {
-                      _pageController.jumpToPage(1);
-                      notifier.setCurrentIndex(1);
-                    },
-                    child: Text(
-                      "Đặt may",
-                      style: TextStyle(
-                        color: index == 1
-                            ? ColorUtils.blueColor
-                            : ColorUtils.primaryColor,
-                      ),
-                    ),
+                  _buildNavItem(
+                    context,
+                    index,
+                    1,
+                    "Đặt may",
+                    Icons.shopping_cart,
                   ),
-                  TextButton(
-                    onPressed: () {
-                      _pageController.jumpToPage(2);
-                      notifier.setCurrentIndex(2);
-                    },
-                    child: Text(
-                      "Lập hóa đơn",
-                      style: TextStyle(
-                        color: index == 2
-                            ? ColorUtils.blueColor
-                            : ColorUtils.primaryColor,
-                      ),
-                    ),
+                  _buildNavItem(
+                    context,
+                    index,
+                    2,
+                    "Lập hóa đơn",
+                    Icons.receipt,
                   ),
                 ],
               );
             },
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildNavItem(
+    BuildContext context,
+    int currentIndex,
+    int index,
+    String label,
+    IconData icon,
+  ) {
+    final isSelected = currentIndex == index;
+
+    return TextButton(
+      onPressed: () {
+        _pageController.jumpToPage(index);
+        notifier.setCurrentIndex(index);
+      },
+      style: TextButton.styleFrom(
+        foregroundColor:
+            isSelected ? ColorUtils.blueColor : ColorUtils.primaryColor,
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        textStyle: TextStyle(
+          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+          fontSize: isSelected ? 16 : 14,
+        ),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon,
+              color:
+                  isSelected ? ColorUtils.blueColor : ColorUtils.primaryColor),
+          const SizedBox(height: 4),
+          Text(label),
+        ],
       ),
     );
   }

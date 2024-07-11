@@ -65,7 +65,18 @@ class _OrderViewState extends BaseStateDelegate<OrderView, ProfileNotifier>
                 InkWell(
                   onTap: () => Routes.goToOrderDetailScreen(context),
                   child: Container(
-                    color: Colors.brown,
+                    decoration: BoxDecoration(
+                      color: ColorUtils.blueMiddleColor,
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
+                    ),
                     height: 100,
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),

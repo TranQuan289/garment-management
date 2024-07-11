@@ -87,7 +87,18 @@ class _HomeViewState extends BaseStateDelegate<HomeView, ProfileNotifier>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        color: Colors.brown,
+                        decoration: BoxDecoration(
+                          color: ColorUtils.blueMiddleColor,
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
                         height: 150,
                         width: 150,
                         child: TextButton(
@@ -103,7 +114,18 @@ class _HomeViewState extends BaseStateDelegate<HomeView, ProfileNotifier>
                         width: 30,
                       ),
                       Container(
-                        color: Colors.brown,
+                        decoration: BoxDecoration(
+                          color: ColorUtils.blueMiddleColor,
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
                         height: 150,
                         width: 150,
                         child: TextButton(
