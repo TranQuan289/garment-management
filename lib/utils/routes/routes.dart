@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:garment_management/features/auth/sign_in_view.dart';
 import 'package:garment_management/features/bottom_navigator/bottom_navigator_view.dart';
 import 'package:garment_management/features/order/order_detail_view.dart';
+import 'package:garment_management/features/order/order_info_view.dart';
 import 'package:garment_management/features/product/product_detail_view.dart';
 import 'package:garment_management/features/product/product_view.dart';
 import 'package:garment_management/features/search_order/search_order_detail_view.dart';
@@ -38,6 +39,10 @@ class Routes {
       case RoutesName.searchOrderDetail:
         return MaterialPageRoute(
           builder: (BuildContext context) => const SearchOrderDetailView(),
+        );
+      case RoutesName.orderInfo:
+        return MaterialPageRoute(
+          builder: (BuildContext context) => const OrderInfoView(),
         );
       default:
         return MaterialPageRoute(builder: (_) {
@@ -78,5 +83,9 @@ class Routes {
 
   static void goToSearchOrderDetailScreen(BuildContext context) {
     Navigator.of(context).pushNamed(RoutesName.searchOrderDetail);
+  }
+
+  static void goToOrderInfoScreen(BuildContext context) {
+    Navigator.of(context).pushNamed(RoutesName.orderInfo);
   }
 }

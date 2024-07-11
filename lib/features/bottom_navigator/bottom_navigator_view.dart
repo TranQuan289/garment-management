@@ -83,7 +83,7 @@ class _BottomNavigationViewState
                     context,
                     index,
                     2,
-                    "Lập hóa đơn",
+                    "Hóa đơn",
                     Icons.receipt,
                   ),
                 ],

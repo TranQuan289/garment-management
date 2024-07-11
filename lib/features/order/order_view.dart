@@ -61,9 +61,8 @@ class _OrderViewState extends BaseStateDelegate<OrderView, ProfileNotifier>
                 SizedBox(
                   height: 10,
                 ),
-                //
                 InkWell(
-                  onTap: () => Routes.goToOrderDetailScreen(context),
+                  onTap: () => Routes.goToOrderInfoScreen(context),
                   child: Container(
                     decoration: BoxDecoration(
                       color: ColorUtils.blueMiddleColor,
@@ -104,8 +103,30 @@ class _OrderViewState extends BaseStateDelegate<OrderView, ProfileNotifier>
                               ),
                             ],
                           ),
-                          ElevatedButton(
-                              onPressed: () {}, child: Icon(Icons.more_horiz)),
+                          Container(
+                            height: 40,
+                            width: 60,
+                            decoration: BoxDecoration(
+                              color: ColorUtils.whiteColor,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                            ),
+                            child: PopupMenuButton<int>(
+                              onSelected: (item) => onSelected(context, item),
+                              itemBuilder: (context) => [
+                                PopupMenuItem<int>(
+                                  value: 0,
+                                  child: Text('Chi tiết'),
+                                ),
+                                PopupMenuItem<int>(
+                                  value: 1,
+                                  child: Text('Lập hóa đơn'),
+                                ),
+                              ],
+                              icon: Icon(Icons.more_horiz,
+                                  color: ColorUtils.blueMiddleColor),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -117,6 +138,17 @@ class _OrderViewState extends BaseStateDelegate<OrderView, ProfileNotifier>
         ),
       ),
     );
+  }
+
+  void onSelected(BuildContext context, int item) {
+    switch (item) {
+      case 0:
+        Routes.goToOrderDetailScreen(context);
+        break;
+      case 1:
+        // Thêm hành động lập hóa đơn tại đây
+        break;
+    }
   }
 
   @override

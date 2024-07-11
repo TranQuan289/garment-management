@@ -7,4 +7,5 @@ class RoutesName {
   static const orderDetail = '/orderDetail';
   static const searchOrder = '/searchOrder';
   static const searchOrderDetail = '/searchOrderDetail';
+  static const orderInfo = '/orderInfo';
 }
