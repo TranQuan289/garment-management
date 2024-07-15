@@ -73,6 +73,14 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                 label: "Size",
                 inputAction: TextInputAction.next,
               ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormFieldCustomWidget(
+                hint: '',
+                label: "Kiểu sản phẩm",
+                inputAction: TextInputAction.next,
+              ),
             ],
           ),
         ),

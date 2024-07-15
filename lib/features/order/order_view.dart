@@ -62,7 +62,7 @@ class _OrderViewState extends BaseStateDelegate<OrderView, ProfileNotifier>
                   height: 10,
                 ),
                 InkWell(
-                  onTap: () => Routes.goToOrderInfoScreen(context),
+                  // onTap: () => Routes.goToOrderInfoScreen(context),
                   child: Container(
                     decoration: BoxDecoration(
                       color: ColorUtils.blueMiddleColor,
@@ -120,6 +120,10 @@ class _OrderViewState extends BaseStateDelegate<OrderView, ProfileNotifier>
                                 ),
                                 PopupMenuItem<int>(
                                   value: 1,
+                                  child: Text('Lập phiếu may'),
+                                ),
+                                PopupMenuItem<int>(
+                                  value: 2,
                                   child: Text('Lập hóa đơn'),
                                 ),
                               ],
@@ -146,7 +150,7 @@ class _OrderViewState extends BaseStateDelegate<OrderView, ProfileNotifier>
         Routes.goToOrderDetailScreen(context);
         break;
       case 1:
-        // Thêm hành động lập hóa đơn tại đây
+        Routes.goToOrderInfoScreen(context);
         break;
     }
   }
