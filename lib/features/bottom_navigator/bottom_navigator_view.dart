@@ -7,6 +7,7 @@ import 'package:garment_management/features/bill/bill_view.dart';
 import 'package:garment_management/utils/color_utils.dart';
 import '../../common/base_state_delegate/base_state_delegate.dart';
 
+
 class BottomNavigationView extends ConsumerStatefulWidget {
   const BottomNavigationView({super.key});
 

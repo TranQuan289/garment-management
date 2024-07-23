@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garment_management/utils/color_utils.dart';
 
-
 class TextFormFieldCustomWidget extends StatelessWidget {
   final String? hint;
   final String? label;
@@ -12,6 +11,7 @@ class TextFormFieldCustomWidget extends StatelessWidget {
   final TextInputAction? inputAction;
   final Function(String value)? onChanged;
   final TextInputType? textInputType;
+  final bool? isEnable;
 
   const TextFormFieldCustomWidget({
     super.key,
@@ -23,6 +23,7 @@ class TextFormFieldCustomWidget extends StatelessWidget {
     this.obscureText,
     this.inputAction,
     this.textInputType,
+    this.isEnable,
   });
 
   @override
@@ -42,6 +43,7 @@ class TextFormFieldCustomWidget extends StatelessWidget {
           height: 5.h,
         ),
         TextFormField(
+          enabled: isEnable,
           controller: controller,
           obscureText: obscureText ?? false,
           onChanged: onChanged,
@@ -66,6 +68,13 @@ class TextFormFieldCustomWidget extends StatelessWidget {
               ),
             ),
             enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+              borderSide: BorderSide(
+                color: ColorUtils.blueLightColor,
+                width: 1,
+              ),
+            ),
+            disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
               borderSide: BorderSide(
                 color: ColorUtils.blueLightColor,

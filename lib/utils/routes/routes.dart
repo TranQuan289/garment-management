@@ -3,9 +3,7 @@ import 'package:garment_management/features/auth/sign_in_view.dart';
 import 'package:garment_management/features/bottom_navigator/bottom_navigator_view.dart';
 import 'package:garment_management/features/order/order_detail_view.dart';
 import 'package:garment_management/features/order/order_info_view.dart';
-import 'package:garment_management/features/product/product_detail_view.dart';
 import 'package:garment_management/features/product/product_view.dart';
-import 'package:garment_management/features/search_order/search_order_detail_view.dart';
 import 'package:garment_management/features/search_order/search_order_view.dart';
 import 'routes_name.dart';
 
@@ -28,18 +26,12 @@ class Routes {
         return MaterialPageRoute(
           builder: (BuildContext context) => const ProductView(),
         );
-      case RoutesName.productDetail:
-        return MaterialPageRoute(
-          builder: (BuildContext context) => const ProductDetailView(),
-        );
+
       case RoutesName.searchOrder:
         return MaterialPageRoute(
           builder: (BuildContext context) => const SearchOrderView(),
         );
-      case RoutesName.searchOrderDetail:
-        return MaterialPageRoute(
-          builder: (BuildContext context) => const SearchOrderDetailView(),
-        );
+
       case RoutesName.orderInfo:
         return MaterialPageRoute(
           builder: (BuildContext context) => const OrderInfoView(),
@@ -67,10 +59,6 @@ class Routes {
 
   static void goToProductScreen(BuildContext context) {
     Navigator.of(context).pushNamed(RoutesName.product);
-  }
-
-  static void goToProductDetailScreen(BuildContext context) {
-    Navigator.of(context).pushNamed(RoutesName.productDetail);
   }
 
   static void goToOrderDetailScreen(BuildContext context) {

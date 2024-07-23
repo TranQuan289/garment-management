@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garment_management/common/widgets/text_form_field.dart';
+import 'package:garment_management/models/order_model.dart';
 import 'package:garment_management/utils/color_utils.dart';
 
-class SearchOrderDetailView extends StatefulWidget {
-  const SearchOrderDetailView({Key? key}) : super(key: key);
+class SearchOrderDetailView extends StatelessWidget {
+  final Order order;
 
-  @override
-  _SearchOrderDetailViewState createState() => _SearchOrderDetailViewState();
-}
+  const SearchOrderDetailView({Key? key, required this.order})
+      : super(key: key);
 
-class _SearchOrderDetailViewState extends State<SearchOrderDetailView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,52 +33,58 @@ class _SearchOrderDetailViewState extends State<SearchOrderDetailView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               TextFormFieldCustomWidget(
-                hint: '',
                 label: "Mã hóa đơn",
+                hint: order.orderId,
                 inputAction: TextInputAction.next,
+                isEnable: false,
               ),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               TextFormFieldCustomWidget(
-                hint: '',
                 label: "Tên khách hàng",
+                hint: order.fullName,
                 inputAction: TextInputAction.next,
+                isEnable: false,
               ),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               TextFormFieldCustomWidget(
-                hint: '',
                 label: "Ngày đặt",
+                hint: order.creDt.toString(),
                 inputAction: TextInputAction.next,
+                isEnable: false,
               ),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               TextFormFieldCustomWidget(
-                hint: '',
                 label: "Số điện thoại",
+                hint: order.phoneNumber,
                 inputAction: TextInputAction.next,
+                isEnable: false,
               ),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               TextFormFieldCustomWidget(
-                hint: '',
                 label: "Tổng tiền",
+                hint: order.totalAmount.toString(),
                 inputAction: TextInputAction.next,
+                isEnable: false,
               ),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               TextFormFieldCustomWidget(
-                hint: '',
                 label: "Trạng thái",
+                hint: order.status,
                 inputAction: TextInputAction.next,
+                isEnable: false,
               ),
             ],
           ),

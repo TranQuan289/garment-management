@@ -1,24 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:garment_management/common/base_state_delegate/base_state_delegate.dart';
-import 'package:garment_management/features/bill/notifier/profile_notifier.dart';
 import 'package:garment_management/utils/color_utils.dart';
 import 'package:garment_management/utils/routes/routes.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class HomeView extends ConsumerStatefulWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
   @override
-  BaseStateDelegate<HomeView, ProfileNotifier> createState() =>
-      _HomeViewState();
+  _HomeViewState createState() => _HomeViewState();
 }
 
-class _HomeViewState extends BaseStateDelegate<HomeView, ProfileNotifier>
+class _HomeViewState extends State<HomeView>
     with AutomaticKeepAliveClientMixin {
+  String username = '';
+
   @override
-  void initNotifier() {
-    notifier = ref.read(profileNotifierProvider.notifier);
+  void initState() {
+    super.initState();
+    _loadUserDetails();
+  }
+
+  Future<void> _loadUserDetails() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      username = prefs.getString('username') ?? 'Guest';
+    });
   }
 
   @override
@@ -75,7 +83,7 @@ class _HomeViewState extends BaseStateDelegate<HomeView, ProfileNotifier>
                         SizedBox(
                           height: 30,
                         ),
-                        Text('Hello, Bảo')
+                        Text('Hello, $username')
                       ],
                     ),
                   ),
