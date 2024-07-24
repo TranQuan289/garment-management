@@ -36,9 +36,6 @@ class _OrderInfoViewState extends State<OrderInfoView> {
       TextEditingController();
   final TextEditingController _shippingMethodController =
       TextEditingController();
-  final TextEditingController _estDeliveryController = TextEditingController();
-  final TextEditingController _actualDeliveryController =
-      TextEditingController();
 
   @override
   void initState() {
